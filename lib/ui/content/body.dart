@@ -46,7 +46,8 @@ class HttpBodyState extends State<HttpBodyWidget> {
 
   /// 按键事件
   void onKeyEvent(RawKeyEvent event) {
-    if (event.isKeyPressed(LogicalKeyboardKey.metaLeft) && event.isKeyPressed(LogicalKeyboardKey.keyW)) {
+    if ((event.isKeyPressed(LogicalKeyboardKey.metaLeft) || event.isControlPressed) &&
+        event.isKeyPressed(LogicalKeyboardKey.keyW)) {
       RawKeyboard.instance.removeListener(onKeyEvent);
       widget.windowController?.close();
       return;

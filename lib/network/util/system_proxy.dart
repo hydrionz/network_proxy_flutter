@@ -90,6 +90,10 @@ class SystemProxy {
     ]).then((results) => results.stdout.toString().split('\n'));
 
     var proxyEnable = result.firstWhere((item) => item.contains('Enabled')).trim().split(": ")[1];
+    if (proxyEnable == 'No') {
+      return null;
+    }
+
     var proxyServer = result.firstWhere((item) => item.contains('Server')).trim().split(": ")[1];
     var proxyPort = result.firstWhere((item) => item.contains('Port')).trim().split(": ")[1];
     if (proxyEnable == 'Yes' && proxyServer.isNotEmpty) {
